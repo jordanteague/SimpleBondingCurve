@@ -5,7 +5,7 @@ pragma solidity >=0.8.0;
 
 import "./ERC20.sol";
 
-contract LogishBondingCurve is ERC20 {
+contract LogLikeBondingCurve is ERC20 {
     uint256 public startingPrice; // wei
 
     uint256 public blockSize; // wei
