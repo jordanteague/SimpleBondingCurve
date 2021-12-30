@@ -4,7 +4,7 @@ pragma solidity >=0.8.0;
 
 import "./ERC20.sol";
 
-contract SimpleBondingCurve is ERC20 {
+contract LinearBondingCurve is ERC20 {
     uint256 public startingPrice; // wei
 
     uint256 public blockSize; // wei
@@ -45,8 +45,8 @@ contract SimpleBondingCurve is ERC20 {
 
         uint256 currentBlock = getCurrentBlock();
 
-        for (uint256 i = 0; i < currentBlock + 1; i++) {
-            currentPrice += blockPriceIncrement * i;
+        for (uint256 i = 0; i < currentBlock; i++) {
+            currentPrice += blockPriceIncrement;
         }
 
         return currentPrice;
@@ -75,7 +75,7 @@ contract SimpleBondingCurve is ERC20 {
             for (uint256 i = 0; i < blocksRemaining; i++) {
                 estTotal += currentPrice * blockSize;
 
-                currentPrice += blockPriceIncrement * (i+1);
+                currentPrice += blockPriceIncrement;
             }
 
             if (remainder != 0) {
