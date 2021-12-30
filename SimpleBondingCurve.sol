@@ -45,7 +45,7 @@ contract SimpleBondingCurve is ERC20 {
 
         uint256 currentBlock = getCurrentBlock();
 
-        for (uint256 i = 0; i < currentBlock++; i++) {
+        for (uint256 i = 0; i < currentBlock + 1; i++) {
             currentPrice += blockPriceIncrement * i;
         }
 
@@ -75,7 +75,7 @@ contract SimpleBondingCurve is ERC20 {
             for (uint256 i = 0; i < blocksRemaining; i++) {
                 estTotal += currentPrice * blockSize;
 
-                currentPrice += blockPriceIncrement * i++;
+                currentPrice += blockPriceIncrement * (i+1);
             }
 
             if (remainder != 0) {
